@@ -1,3 +1,3 @@
 function teste(){
-    return {a:23,};
+    return {a:23,b : 23};
 }
