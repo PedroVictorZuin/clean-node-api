@@ -1,17 +1,18 @@
 class LoginRouter {
   route (httpRequest) {
     if (!httpRequest || !httpRequest.body) {
-      return {
-        statusCode: 500
-      }
+      return HttpResponse.internalServerError()
     }
     const { email, password } = httpRequest.body
     if (!email || !password) {
-      return {
-        statusCode: 400
-      }
+      return HttpResponse.badRequest()
     }
   }
+}
+
+class HttpResponse {
+  static badRequest () { return ({ statusCode: 400 }) }
+  static internalServerError () { return ({ statusCode: 500 }) }
 }
 
 describe('Login Router', () => {
